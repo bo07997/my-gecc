@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.Jedis;
@@ -40,8 +43,11 @@ public class BookPip implements Pipeline<bookInfo> {
 	Logger Logger = LoggerFactory.getLogger(BookPip.class);
 	private static Jedis Jedis = RedisUtil.getJedis();
 
+	@Resource(name = "bookInfoServiceimpl")
+	private BookInfoService bookInfo2;
 	@Override
 	public void process(bookInfo bean) {
+		//获取bean
 		BookInfoService bookInfoService = SpringContextUtil.getBean("bookInfoServiceimpl");
 		/*
 		 * AJAX请求部分,后期改造结构

@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.dianbo.liu.springCrawler.entity.ScheduleJob;
-import com.dianbo.liu.springCrawler.myCrawler.ScheduleJobService;
+import com.dianbo.liu.springCrawler.service.serviceImpl.ScheduleJobService;
 
 import javax.servlet.http.HttpServletRequest;
 

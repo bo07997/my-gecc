@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dianbo.liu.springCrawler.mapper.ChapterDetailMapper">
+  <resultMap id="BaseResultMap" type="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="book_id" jdbcType="VARCHAR" property="bookId" />
+    <result column="chapter_name" jdbcType="VARCHAR" property="chapterName" />
+    <result column="chapter_url" jdbcType="VARCHAR" property="chapterUrl" />
+    <result column="sort_tag" jdbcType="VARCHAR" property="sortTag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, book_id, chapter_name, chapter_url, sort_tag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ding_chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ding_chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <!-- 批量插入 -->
+  <insert id="insertChapterList"  parameterType="java.util.List">
+   insert into ding_chapter (book_id,chapter_name,chapter_url)   
+    values  
+    <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.bookId},#{item.chapterName},#{item.chapterUrl})  
+    </foreach>
+  </insert>
+  
+  <insert id="insert" parameterType="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    insert into ding_chapter (id, book_id, chapter_name, 
+      chapter_url, sort_tag)
+    values (#{id,jdbcType=INTEGER}, #{bookId,jdbcType=VARCHAR}, #{chapterName,jdbcType=VARCHAR}, 
+      #{chapterUrl,jdbcType=VARCHAR}, #{sortTag,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    insert into ding_chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="chapterName != null">
+        chapter_name,
+      </if>
+      <if test="chapterUrl != null">
+        chapter_url,
+      </if>
+      <if test="sortTag != null">
+        sort_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterName != null">
+        #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterUrl != null">
+        #{chapterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sortTag != null">
+        #{sortTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    update ding_chapter
+    <set>
+      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterName != null">
+        chapter_name = #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterUrl != null">
+        chapter_url = #{chapterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sortTag != null">
+        sort_tag = #{sortTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    update ding_chapter
+    set book_id = #{bookId,jdbcType=VARCHAR},
+      chapter_name = #{chapterName,jdbcType=VARCHAR},
+      chapter_url = #{chapterUrl,jdbcType=VARCHAR},
+      sort_tag = #{sortTag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+    <result column="book_url" jdbcType="VARCHAR" property="bookUrl" />
+    <result column="instruction" jdbcType="VARCHAR" property="instruction" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="updateTime" jdbcType="VARCHAR" property="updatetime" />
+    <result column="new_chapter_name" jdbcType="VARCHAR" property="newChapterName" />
+    <result column="piture_url" jdbcType="VARCHAR" property="pitureUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, book_name, book_url, instruction, author, category, updateTime, new_chapter_name, 
+    piture_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ding_book_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ding_book_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    insert into ding_book_info (id, book_name, book_url, 
+      instruction, author, category, 
+      updateTime, new_chapter_name, piture_url
+      )
+    values (#{id,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{bookUrl,jdbcType=VARCHAR}, 
+      #{instruction,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=VARCHAR}, #{newChapterName,jdbcType=VARCHAR}, #{pitureUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    insert into ding_book_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bookName != null">
+        book_name,
+      </if>
+      <if test="bookUrl != null">
+        book_url,
+      </if>
+      <if test="instruction != null">
+        instruction,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="newChapterName != null">
+        new_chapter_name,
+      </if>
+      <if test="pitureUrl != null">
+        piture_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookUrl != null">
+        #{bookUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="newChapterName != null">
+        #{newChapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="pitureUrl != null">
+        #{pitureUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dianbo.liu.springCrawler.crawler.chapter.ChapterDetail">
+    update ding_book_info
+    <set>
+      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookUrl != null">
+        book_url = #{bookUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        instruction = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="newChapterName != null">
+        new_chapter_name = #{newChapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="pitureUrl != null">
+        piture_url = #{pitureUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dianbo.liu.springCrawler.Crawler.chapter.chapterDetail">
+    update ding_book_info
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      book_url = #{bookUrl,jdbcType=VARCHAR},
+      instruction = #{instruction,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=VARCHAR},
+      new_chapter_name = #{newChapterName,jdbcType=VARCHAR},
+      piture_url = #{pitureUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

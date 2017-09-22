@@ -1,4 +1,4 @@
-package com.dianbo.liu.springCrawler.myCrawler;
+package com.dianbo.liu.springCrawler.service.serviceImpl;
 
 import org.apache.log4j.Logger;
 import org.quartz.*;

@@ -42,5 +42,7 @@
 	<!-- 引入自定义 mapper 文件 -->
 	<mappers>
 		<mapper resource="mapper/bookInfoMapper.xml"/>
+		<mapper resource="mapper/SearchDetailMapper.xml"/>
+		<mapper resource="mapper/ChapterDetailMapper.xml"/>
 	</mappers>
 </configuration>
