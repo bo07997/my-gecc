@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dianbo.liu.springCrawler.crawler.bookInfo.bookInfo;
-import com.dianbo.liu.springCrawler.mapper.bookInfoMapper;
+import com.dianbo.liu.springCrawler.mapper.BookInfoMapper;
 import com.dianbo.liu.springCrawler.service.BookInfoService;
 import com.yyfq.commons.lang.idgenerator.IdUtils;
 @Service
@@ -14,7 +14,7 @@ public class BookInfoServiceimpl implements BookInfoService {
 	
 	Logger Logger = LoggerFactory.getLogger(BookInfoServiceimpl.class);
 	@Autowired
-	private bookInfoMapper bookInfoMapper;
+	private BookInfoMapper bookInfoMapper;
 	
 
 

@@ -19,7 +19,7 @@ public class ChapterPip implements Pipeline<ChapterInfo>{
 	         }
 	 	}
 		//插入数据库
-		chapterDetailService.insertChapterInfoList(bean.getChapterDetails());
+		chapterDetailService.insertChapterInfoList(bean);
 		
 		
 		

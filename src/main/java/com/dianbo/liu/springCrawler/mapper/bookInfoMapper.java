@@ -3,11 +3,7 @@ package com.dianbo.liu.springCrawler.mapper;
 
 import com.dianbo.liu.springCrawler.crawler.bookInfo.bookInfo;
 
-
-
-
-
-public interface bookInfoMapper {
+public interface BookInfoMapper {
     int deleteByPrimaryKey(String bookId);
 
     int insert(bookInfo record);

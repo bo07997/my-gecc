@@ -43,8 +43,8 @@ public class BookPip implements Pipeline<bookInfo> {
 	Logger Logger = LoggerFactory.getLogger(BookPip.class);
 	private static Jedis Jedis = RedisUtil.getJedis();
 
-	@Resource(name = "bookInfoServiceimpl")
-	private BookInfoService bookInfo2;
+	/*@Resource(name = "bookInfoServiceimpl")
+	private BookInfoService bookInfo2;*/
 	@Override
 	public void process(bookInfo bean) {
 		//获取bean

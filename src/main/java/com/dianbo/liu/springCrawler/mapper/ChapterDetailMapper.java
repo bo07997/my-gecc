@@ -18,4 +18,6 @@ public interface ChapterDetailMapper {
     int updateByPrimaryKey(ChapterDetail record);
   //批量插入
   	int insertChapterList(List<ChapterDetail> chapterDetails);
+   //选择Urls通过book_id
+	List<String> selectUrlsByBookId(String bookId);
 }

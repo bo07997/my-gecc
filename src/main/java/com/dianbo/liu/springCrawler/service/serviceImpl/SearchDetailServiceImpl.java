@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dianbo.liu.springCrawler.crawler.search.SearchDetail;
 import com.dianbo.liu.springCrawler.mapper.SearchDetailMapper;
-import com.dianbo.liu.springCrawler.mapper.bookInfoMapper;
+import com.dianbo.liu.springCrawler.mapper.BookInfoMapper;
 import com.dianbo.liu.springCrawler.service.SearchDetailService;
 @Service
 public class SearchDetailServiceImpl implements SearchDetailService {

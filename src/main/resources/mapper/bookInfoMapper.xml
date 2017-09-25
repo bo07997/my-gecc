@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dianbo.liu.springCrawler.mapper.bookInfoMapper">
+<mapper namespace="com.dianbo.liu.springCrawler.mapper.BookInfoMapper">
   <resultMap id="BaseResultMap" type="com.dianbo.liu.springCrawler.crawler.bookInfo.bookInfo">
     <id column="book_id" jdbcType="VARCHAR" property="bookId" />
     <result column="qidian_id" jdbcType="VARCHAR" property="qidianId" />
